@@ -78,6 +78,13 @@ var snake = {
       this.hashes[i] = new_pos;
       new_pos = old_pos;
     }
+    // Check if snake eats
+    foods.forEach(function(element,index){
+      if(Math.abs(element.position.x - snake.position.x) <= snake.hash_size.x &&
+        Math.abs(element.position.y - snake.position.y) <= snake.hash_size.y) {
+        snake.eat(index);
+      }
+    });
     // Redraw Snake's body
     this.redraw();
   },
@@ -92,6 +99,12 @@ var snake = {
         y: this.hashes[this.hashes.length - 1].y
       });
     }
+  },
+  /** Snake eats */
+  eat: function(food_index) {
+    foods.splice(food_index, 1);
+    this.add_hash();
+    foods.push(new food());
   },
   /** Remove hash bit off the snake */
   remove_hash: function() {
