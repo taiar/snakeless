@@ -12,6 +12,8 @@ function key_controll(e){
     key_add();
   else if(e.keyCode == 109)
     key_subtract();
+  else if(e.keyCode == 80)
+    key_o();
 }
 
 /** Actions fired by key codes */
@@ -21,3 +23,4 @@ function key_right()    { snake.direction =  39; }
 function key_down()     { snake.direction =  40; }
 function key_add()      { snake.add_hash();      }
 function key_subtract() { snake.remove_hash();   }
+function key_o()        { snake.toggle();        }

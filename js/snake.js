@@ -40,11 +40,11 @@ var snake = {
   /** Print snake's body */
   redraw: function() {
     tela.clear();
-    this.hashes.forEach(function(element, index){
+    this.hashes.forEach(function(element){
       add_square(element, this.color, this.hash_size);
     });
   },
-  /** Recalculate the new snake's body position and call the draw function 
+  /** Recalculate the new snake's body position and call the draw function
         making it walk */
   walk: function() {
     // Snake's new position based on the direction it is going
@@ -58,12 +58,12 @@ var snake = {
       this.position.y = this.position.y + this.hash_size.y;
     // Calculate the new body position moving like a snake
     old_pos = {};
-    new_pos = {x: this.position.x, y: this.position.y}
+    new_pos = {x: this.position.x, y: this.position.y};
     for (i = 0; i < this.hashes.length; i++) {
       old_pos = this.hashes[i];
       this.hashes[i] = new_pos;
       new_pos = old_pos;
-    };
+    }
     // Redraw Snake's body
     this.redraw();
   },
@@ -87,8 +87,14 @@ var snake = {
       this.size = this.size - 1;
       this.hashes.splice(-1,1);
     }
+  },
+  /** Toggles snake on/off */
+  toggle: function() {
+    if(this.status == 1)
+      this.off();
+    else this.on();
   }
-}
+};
 
 function global_walk() {
   snake.walk();
