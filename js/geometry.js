@@ -15,9 +15,13 @@ var tela = {
   get_center: function() {
     return { x: sc.width / 2, y: sc.height / 2 }
   },
+  // Get screen dimensions
+  get_dimensions: function() {
+    return {x: sc.width, y: sc.height };
+  },
   // Clear the canvas
   clear: function() {
     ctx = sc.getContext("2d");
     ctx.clearRect ( 0 , 0 , sc.width, sc.height );
   }
-}
+};

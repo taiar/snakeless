@@ -49,13 +49,17 @@ var snake = {
   walk: function() {
     // Snake's new position based on the direction it is going
     if(this.direction == 37)
-      this.position.x = this.position.x - this.hash_size.x;
+      this.position.x = (this.position.x - this.hash_size.x < 0) ?
+        tela.get_dimensions().x : this.position.x - this.hash_size.x;
     else if(this.direction == 38)
-      this.position.y = this.position.y - this.hash_size.y;
+      this.position.y = (this.position.y - this.hash_size.y < 0) ?
+        tela.get_dimensions().y : this.position.y - this.hash_size.y;
     else if(this.direction == 39)
-      this.position.x = this.position.x + this.hash_size.x;
+      this.position.x = (this.position.x + this.hash_size.x) %
+        tela.get_dimensions().x;
     else if(this.direction == 40)
-      this.position.y = this.position.y + this.hash_size.y;
+      this.position.y = (this.position.y + this.hash_size.y) %
+        tela.get_dimensions().y;
     // Calculate the new body position moving like a snake
     old_pos = {};
     new_pos = {x: this.position.x, y: this.position.y};
