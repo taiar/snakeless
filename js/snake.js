@@ -44,6 +44,11 @@ var snake = {
       add_square(element, this.color, this.hash_size);
     });
   },
+  /** Changes snake's direction based on the direction it is moving. */
+  change_direction: function(direction_code) {
+    this.direction = (direction_code != opposed_direction[this.direction]) ?
+      direction_code : this.direction;
+  },
   /** Recalculate the new snake's body position and call the draw function
         making it walk */
   walk: function() {

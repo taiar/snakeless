@@ -17,10 +17,12 @@ function key_controll(e){
 }
 
 /** Actions fired by key codes */
-function key_left()     { snake.direction =  37; }
-function key_up()       { snake.direction =  38; }
-function key_right()    { snake.direction =  39; }
-function key_down()     { snake.direction =  40; }
-function key_add()      { snake.add_hash();      }
-function key_subtract() { snake.remove_hash();   }
-function key_o()        { snake.toggle();        }
+function key_left()     { snake.change_direction(37); }
+function key_up()       { snake.change_direction(38); }
+function key_right()    { snake.change_direction(39); }
+function key_down()     { snake.change_direction(40); }
+function key_add()      { snake.add_hash();           }
+function key_subtract() { snake.remove_hash();        }
+function key_o()        { snake.toggle();             }
+
+var opposed_direction = { 37: 39, 39: 37, 38: 40, 40: 38 };
