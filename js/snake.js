@@ -2,7 +2,7 @@ var snake = {
   // Snake's present size
   size: 1,
   // Snake's maximum size (the minimun is 1)
-  max_size: 10,
+  max_size: 100,
   // Snake's present position (default is the middle of the sceeen)
   position: tela.get_center(),
   // Snake's hashes body size in pixels
@@ -24,6 +24,7 @@ var snake = {
     // Snake's body initial size is 1 in the middle of the screen
     this.hashes = [];
     this.hashes.push(tela.get_center());
+    foods.push(new food());
     this.redraw();
     this.on();
   },
@@ -37,12 +38,16 @@ var snake = {
     this.status = 0;
     window.clearInterval(this.interval);
   },
-  /** Print snake's body */
+  /** Print snake's body
+   *
+   * TODO: put all draw methods inside a new class or file
+   * */
   redraw: function() {
     tela.clear();
     this.hashes.forEach(function(element){
       add_square(element, this.color, this.hash_size);
     });
+    draw_food();
   },
   /** Changes snake's direction based on the direction it is moving. */
   change_direction: function(direction_code) {

@@ -10,6 +10,13 @@ function add_square(p, color, size) {
   ctx.fillRect(p.x, p.y, size.x, size.y);
 }
 
+function get_random_position() {
+  return {
+    x: Math.floor(Math.random() * (sc.width + 1)),
+    y: Math.floor(Math.random() * (sc.height + 1))
+  };
+}
+
 var tela = {
   // Get center position of the screen
   get_center: function() {
